@@ -8,6 +8,7 @@ export default {
     screenWidth: Dimensions.get('window').width,
     touchableHighlightUnderlayColor: 'rgba(0,0,0,.4)',
     touchableOpacityActiveOpacity: 0.8,
+    rowItemBackgroundColor: '#fff',
     segment: {
         color: '#ccc',
         width: 1/PixelRatio.get()
