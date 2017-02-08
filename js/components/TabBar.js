@@ -23,7 +23,7 @@ export default class TabBar extends Component{
 
     }
     render(){
-        const {selectedColor, normalColor} = this.props;
+        const {selectedColor, normalColor, navigator} = this.props;
         const {tabName} = this.state;
         return (
                 <TabNavigator
@@ -38,7 +38,7 @@ export default class TabBar extends Component{
                         renderIcon={() => <Icon name="md-home" size={20} color={normalColor}/> }
                         renderSelectedIcon={() => <Icon name="md-home" size={20} color={selectedColor}/> }
                         onPress={() => this.setState({ selectedTab: 'home' })}>
-                        {<HomeTab/>}
+                        {<HomeTab navigator={navigator}/>}
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         tabStyle={styles.tabStyle}
@@ -48,7 +48,7 @@ export default class TabBar extends Component{
                         renderIcon={() => <Icon name="md-compass" size={20} color={normalColor}/> }
                         renderSelectedIcon={() => <Icon name="md-compass" size={20} color={selectedColor}/> }
                         onPress={() => this.setState({ selectedTab: 'compass' })}>
-                        {<TestPage/>}
+                        {<TestPage navigator={navigator}/>}
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         tabStyle={styles.tabStyle}
@@ -58,7 +58,7 @@ export default class TabBar extends Component{
                         renderIcon={() => <Icon name="md-add" size={20} color={normalColor}/> }
                         renderSelectedIcon={() => <Icon name="md-add" size={20} color={selectedColor}/> }
                         onPress={() => this.setState({ selectedTab: 'add' })}>
-                        {<TestPage/>}
+                        {<TestPage navigator={navigator}/>}
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         tabStyle={styles.tabStyle}
@@ -68,7 +68,7 @@ export default class TabBar extends Component{
                         renderIcon={() => <Icon name="md-apps" size={20} color={normalColor}/> }
                         renderSelectedIcon={() => <Icon name="md-apps" size={20} color={selectedColor}/> }
                         onPress={() => this.setState({ selectedTab: 'more' })}>
-                        {<TestPage/>}
+                        {<TestPage navigator={navigator}/>}
                     </TabNavigator.Item>
                 </TabNavigator>
         )

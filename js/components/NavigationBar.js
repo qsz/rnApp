@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {StyleSheet, Platform, View, Text, StatusBar, TouchableOpacity} from 'react-native';
+import {StyleSheet, Platform, View, Text, StatusBar, TouchableOpacity, Animated} from 'react-native';
 import theme from '../constants/theme';
 import px2dp from '../utils/px2dp';
 import Icon from 'react-native-vector-icons/Ionicons';

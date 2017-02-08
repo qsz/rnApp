@@ -25,8 +25,7 @@ export default class HomeTab extends Component{
     }
     _getCurrentTime(){
         let date = new Date();
-        return `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`
-
+        return `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`;
     }
     _fetchData(){
         let currentTime = this._getCurrentTime();
@@ -58,6 +57,11 @@ export default class HomeTab extends Component{
             this.setState({opacity: 1});
         }
     }
+    _onPress(id){
+        if( id === 0){
+            this._fetchData()
+        }
+    }
     render(){
         let categoryList = this.state.categoryList, typeList = this.state.typeList;
         return (
@@ -71,7 +75,7 @@ export default class HomeTab extends Component{
                     refreshControl={
                         <RefreshControl
                             refreshing={this.state.loading}
-                            onRefresh={this._onScroll.bind(this, 0)}
+                            onRefresh={this._onPress.bind(this, 0)}
                             tintColor={'yellow'}
                             colors={['red']}
                             title="拼命加载中..."
@@ -80,7 +84,7 @@ export default class HomeTab extends Component{
                     {
                         this.state.err ?
                             <View style={styles.indicator}>
-                                <Text style={{color: '#38b48b'}}>Ooops, 获取数据失败</Text>
+                                <Text style={{color: '#38b48b'}}>获取数据失败</Text>
                             </View>
                             :
                             (
@@ -98,7 +102,9 @@ export default class HomeTab extends Component{
                                                         return (
                                                             <HomeListView key={i}
                                                                           dataSource={categoryList[type]}
-                                                                          headerTitle={type}/>
+                                                                          headerTitle={type}
+                                                                          navigator={this.props.navigator}
+                                                            />
                                                         )
                                                     }
                                                 })

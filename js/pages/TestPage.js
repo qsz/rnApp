@@ -6,7 +6,7 @@ export default class TestPage extends Component{
     render(){
         return (
             <View>
-                <Text>sss</Text>
+                <Text>This is a test page</Text>
             </View>
         )
     }

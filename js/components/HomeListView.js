@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import theme from '../constants/theme';
 import px2dp from '../utils/px2dp';
 import Avatar from './Avatar';
-
+import WebViewPage from '../pages/WebView'
 
 export default class HomeListView extends Component{
     static propTypes = {
@@ -59,7 +59,13 @@ export default class HomeListView extends Component{
             </View>
         );
     }
-    _itemOnPress(){
+    _itemOnPress(rowData){
+        this.props.navigator.push({
+            component: WebViewPage,
+            params: {
+                rowData: rowData
+            }
+        })
 
     }
     _renderRowContent(rowData){
