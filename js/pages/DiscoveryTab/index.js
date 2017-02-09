@@ -5,11 +5,12 @@ import px2dp from '../../utils/px2dp';
 import Avatar from '../../components/Avatar';
 import theme from '../../constants/theme';
 import DiscoveryListView from './DiscoveryListView';
+import DiscoveryTypePage from './DiscoveryTypePage';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const styles = StyleSheet.create({
     container: {
-        paddingBottom: px2dp(80),
+        paddingBottom: px2dp(90),
     },
     tabBarItemIcon: {
         width: px2dp(20),
@@ -81,7 +82,7 @@ export default class DiscoveryTab extends Component{
     }
     _onScroll(event){
         let _ev = event.nativeEvent
-        if( (_ev['contentOffset']['y'] + _ev['layoutMeasurement']['height'] - _ev['contentSize']['height']) >= -10){
+        if( (_ev['contentOffset']['y'] + _ev['layoutMeasurement']['height'] - _ev['contentSize']['height']) >= -5){
             this._fetchRandomData()
         }
     }
@@ -113,6 +114,14 @@ export default class DiscoveryTab extends Component{
 
     }
     _itemPressCallback(subItem){
+        if(subItem === '福利'){
+
+        }else{
+            this.props.navigator.push({
+                component: DiscoveryTypePage,
+                params: {title: subItem, navigator: this.props.navigator}
+            });
+        }
 
     }
     _fetchRandomData(){
@@ -137,7 +146,8 @@ export default class DiscoveryTab extends Component{
                     })
                     .catch(err => {
                         this.setState({
-                            err: true
+                            err: true,
+                            refreshing: false
                         })
                         console.log(err)})
             })
