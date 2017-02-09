@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import px2dp from '../utils/px2dp';
 import TestPage from '../pages/TestPage';
 import HomeTab from '../pages/HomeTab';
+import DiscoveryPage from '../pages/DiscoveryTab';
 import RCTDeviceEventEmitter from 'RCTDeviceEventEmitter';
 
 export default class TabBar extends Component{
@@ -48,7 +49,7 @@ export default class TabBar extends Component{
                         renderIcon={() => <Icon name="md-compass" size={20} color={normalColor}/> }
                         renderSelectedIcon={() => <Icon name="md-compass" size={20} color={selectedColor}/> }
                         onPress={() => this.setState({ selectedTab: 'compass' })}>
-                        {<TestPage navigator={navigator}/>}
+                        {<DiscoveryPage navigator={navigator}/>}
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         tabStyle={styles.tabStyle}

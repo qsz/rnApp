@@ -9,6 +9,11 @@ export default {
     touchableHighlightUnderlayColor: 'rgba(0,0,0,.4)',
     touchableOpacityActiveOpacity: 0.8,
     rowItemBackgroundColor: '#fff',
+    thumbnailColor: '#f1f1f1',
+    subTitleColor: '#aaa',
+    segmentColor: '#ccc',
+    titleColor: '#000',
+    tabIconColor: 'rgb(230,230,230)',
     segment: {
         color: '#ccc',
         width: 1/PixelRatio.get()

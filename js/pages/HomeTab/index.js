@@ -1,11 +1,17 @@
 import React, { Component,PropTypes } from 'react';
-import {Text, StyleSheet, View, ScrollView, RefreshControl, Animated, Image} from 'react-native';
+import {Text, StyleSheet, View, ScrollView, RefreshControl, Animated, Image, ActivityIndicator} from 'react-native';
 import theme from '../../constants/theme';
 import NavigationBar from '../../components/NavigationBar';
 import px2dp from '../../utils/px2dp';
 import HomeListView from '../../components/HomeListView'
 
 export default class HomeTab extends Component{
+    static propTypes = {
+        tabIconColor: PropTypes.string,
+    }
+    static defaultProps = {
+        tabIconColor: '#38b48b',
+    }
     constructor(props){
         super(props);
         this.state = {
@@ -77,7 +83,7 @@ export default class HomeTab extends Component{
                             refreshing={this.state.loading}
                             onRefresh={this._onPress.bind(this, 0)}
                             tintColor={'yellow'}
-                            colors={['red']}
+                            colors={['#38b48b']}
                             title="拼命加载中..."
                         />}
                 >
@@ -112,7 +118,10 @@ export default class HomeTab extends Component{
                                         </View>
                                     </View>
                                     :
-                                    null
+                                    <View style={{flex: 1, justifyContent:'center', alignItems:'center', marginTop:px2dp(150)}}>
+                                        <ActivityIndicator color={this.props.tabIconColor} size="large"/>
+                                        <Text style={{marginTop: px2dp(10), color: this.props.tabIconColor}}>加载中...</Text>
+                                    </View>
                             )
 
                     }
