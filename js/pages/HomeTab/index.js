@@ -6,12 +6,6 @@ import px2dp from '../../utils/px2dp';
 import HomeListView from '../../components/HomeListView'
 
 export default class HomeTab extends Component{
-    static propTypes = {
-        tabIconColor: PropTypes.string,
-    }
-    static defaultProps = {
-        tabIconColor: '#38b48b',
-    }
     static contextTypes = {
         mainThemeColor: PropTypes.string,
         arrowColor: PropTypes.string,

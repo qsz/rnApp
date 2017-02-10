@@ -29,18 +29,19 @@ export default class TabBar extends Component{
         changeBackgroundMode: PropTypes.func
     }
     getChildContext(){
+        let {mainThemeColor, arrowColor, pageBackgroundColor, segmentColor, titleColor, subTitleColor, rowItemBackgroundColor, tabIconColor, thumbnailColor, webViewToolbarColor} = this.state;
         return {
-            mainThemeColor: '#38b48b',
-            arrowColor: '#ccc',
-            pageBackgroundColor: '#f4f4f4',
-            segmentColor: '#ccc',
-            titleColor: '#000',
-            subTitleColor: '#aaa',
-            rowItemBackgroundColor: '#fff',
-            tabIconColor: '#38b48b',
-            thumbnailColor: '#f1f1f1',
-            webViewToolbarColor: 'rgba(255,255,255,.9)',
-            _changeBackgroundMode: this._changeBackgroundMode,
+            mainThemeColor: mainThemeColor,
+            arrowColor: arrowColor,
+            pageBackgroundColor: pageBackgroundColor,
+            segmentColor: segmentColor,
+            titleColor: titleColor,
+            subTitleColor: subTitleColor,
+            rowItemBackgroundColor: rowItemBackgroundColor,
+            tabIconColor: tabIconColor,
+            thumbnailColor: thumbnailColor,
+            webViewToolbarColor: webViewToolbarColor,
+            changeBackgroundMode: this._changeBackgroundMode.bind(this),
         }
     }
     constructor(props){
@@ -67,9 +68,11 @@ export default class TabBar extends Component{
     _changeBackgroundMode(){
         let isNightMode = this.state.isNightMode;
         if( isNightMode ){
-            this.setState(theme.lightMode)
+            let obj = Object.assign({}, theme.lightMode, {isNightMode: false});
+            this.setState(obj)
         }else {
-            this.setState(theme.nightMode)
+            let obj = Object.assign({}, theme.nightMode, {isNightMode: true})
+            this.setState(obj)
         }
     }
     render(){
