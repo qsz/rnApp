@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component , PropTypes} from 'react';
 import { Text, View, BackAndroid, StyleSheet } from 'react-native';
 import NavigationBar from '../../components/NavigationBar';
 import BackPageComponent from '../../components/BackPageComponent';
@@ -17,6 +17,9 @@ export default class DiscoveryTypePage extends BackPageComponent{
             refreshing: false,
             err: false
         }
+    }
+    static contextTypes = {
+        mainThemeColor: PropTypes.string,
     }
     componentDidMount(){
         this._fetchTypeList()
@@ -61,22 +64,31 @@ export default class DiscoveryTypePage extends BackPageComponent{
     }
     render(){
         var {dataList} = this.state;
+        const {navigator, mainThemeColor, titleColor, subTitleColor, rowItemBackgroundColor, thumbnailColor, segmentColor, tabIconColor, pageBackgroundColor} = this.props;
         return (
-            <View style={[styles.container]}>
+            <View style={[styles.container, {backgroundColor: pageBackgroundColor}]}>
                 <NavigationBar title={this.props.title}
                                leftBtnIcon="arrow-back"
-                               leftBtnPress={this._handleBack.bind(this)}/>
+                               leftBtnPress={this._handleBack.bind(this)}
+                               mainThemeColor={this.props.mainThemeColor}
+                />
                 <View style={[styles.listPanel]}>
                     {
                         this.state.err ?
                             <View style={styles.indicator}>
-                                <Text style={{color: '#38b48b'}}>获取数据失败</Text>
+                                <Text style={{color:mainThemeColor}}>获取数据失败</Text>
                             </View>
                             :
                             dataList ?
                                 <TypeListView dataSource={dataList}
-                                              navigator={this.props.navigator}
+                                              navigator={navigator}
                                               onEndReached={this._onEndReached.bind(this)}
+                                              titleColor={titleColor}
+                                              subTitleColor={subTitleColor}
+                                              rowItemBackgroundColor={rowItemBackgroundColor}
+                                              thumbnailColor={thumbnailColor}
+                                              segmentColor={segmentColor}
+                                              tabIconColor={tabIconColor}
                                 />
                                 :
                                 null

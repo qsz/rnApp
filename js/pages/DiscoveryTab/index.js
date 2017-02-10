@@ -65,17 +65,17 @@ export default class DiscoveryTab extends Component{
             err: false
         }
     }
-    static propType = {
+    static contextTypes = {
+        mainThemeColor: PropTypes.string,
+        arrowColor: PropTypes.string,
         pageBackgroundColor: PropTypes.string,
-        rowItemBackgroundColor: PropTypes.string,
         segmentColor: PropTypes.string,
-        subTitleColor: PropTypes.string
-    }
-    static defaultProps = {
-        pageBackgroundColor: '#f4f4f4',
-        rowItemBackgroundColor: '#fff',
-        subTitleColor: '#aaa',
-        segmentColor: '#ccc',
+        titleColor: PropTypes.string,
+        subTitleColor: PropTypes.string,
+        rowItemBackgroundColor: PropTypes.string,
+        tabIconColor: PropTypes.string,
+        thumbnailColor: PropTypes.string,
+        webViewToolbarColor: PropTypes.string,
     }
     componentDidMount(){
         this._fetchRandomData()
@@ -119,7 +119,18 @@ export default class DiscoveryTab extends Component{
         }else{
             this.props.navigator.push({
                 component: DiscoveryTypePage,
-                params: {title: subItem, navigator: this.props.navigator}
+                params: {
+                    title: subItem,
+                    navigator: this.props.navigator,
+                    mainThemeColor: this.context.mainThemeColor,
+                    titleColor: this.context.titleColor,
+                    subTitleColor: this.context.subTitleColor,
+                    rowItemBackgroundColor: this.context.rowItemBackgroundColor,
+                    thumbnailColor: this.context.thumbnailColor,
+                    segmentColor: this.context.segmentColor,
+                    tabIconColor: this.context.tabIconColor,
+                    pageBackgroundColor: this.context.pageBackgroundColor
+                }
             });
         }
 
@@ -154,11 +165,13 @@ export default class DiscoveryTab extends Component{
         }
     }
     render(){
-        const { rowItemBackgroundColor, segmentColor, subTitleColor } = this.props;
+        const { rowItemBackgroundColor, segmentColor, subTitleColor, pageBackgroundColor, titleColor , mainThemeColor} = this.context;
         const { discoveryList } = this.state;
         return (
-            <View style={[styles.container, {backgroundColor: this.props.pageBackgroundColor}]}>
-                <NavigationBar title='发现'/>
+            <View style={[styles.container, {backgroundColor: pageBackgroundColor}]}>
+                <NavigationBar title='发现'
+                               mainThemeColor={mainThemeColor}
+                />
                 <ScrollView
                     scrollEnabled={true}
                     onScroll={this._onScroll.bind(this)}
@@ -166,8 +179,8 @@ export default class DiscoveryTab extends Component{
                         <RefreshControl
                             refreshing={this.state.loading}
                             onRefresh={this._onRefresh.bind(this, 0)}
-                            tintColor={'yellow'}
-                            colors={['#38b48b']}
+                            tintColor={mainThemeColor}
+                            colors={[mainThemeColor]}
                             title="拼命加载中..."
                         />}
                 >
@@ -185,7 +198,7 @@ export default class DiscoveryTab extends Component{
                                                             activeOpacity={theme.touchableOpacityActiveOpacity}>
                                                             {this._renderTypeContent(i,index)}
                                                         </TouchableOpacity>
-                                                        <Text style={[styles.btnCellLabel, {color: this.props.titleColor}]}>{subItem}</Text>
+                                                        <Text style={[styles.btnCellLabel, {color: titleColor}]}>{subItem}</Text>
                                                     </View>
                                                 )
                                             })

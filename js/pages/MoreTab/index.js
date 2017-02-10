@@ -72,11 +72,13 @@ export default class MoreTab extends Component{
         })
     }
     render(){
-        const {segmentColor, pageBackgroundColor} = this.context;
+        const {segmentColor, pageBackgroundColor, mainThemeColor} = this.context;
         const {isOpenNightMode, isRefreshAuto} = this.state;
         return (
             <View style={[styles.container, {backgroundColor: pageBackgroundColor}]}>
-                <NavigationBar title="更多" />
+                <NavigationBar title="更多"
+                               mainThemeColor={mainThemeColor}
+                />
                 <ScrollView>
                     {
                         Platform.OS === 'android' ?

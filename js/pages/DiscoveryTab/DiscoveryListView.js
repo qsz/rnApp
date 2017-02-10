@@ -10,24 +10,20 @@ import Footer from '../../components/FooterList'
 export default class DiscoveryListView extends Component{
     static propTypes = {
         dataSource: PropTypes.array.isRequired,
-        rowItemBackgroundColor: PropTypes.string,
-        thumbnailColor: PropTypes.string,
-        subTitleColor: PropTypes.string,
-        titleColor: PropTypes.string,
-        segmentColor: PropTypes.string,
-        tabIconColor: PropTypes.string,
         isRenderFooter: PropTypes.bool,
         isFullData: PropTypes.bool
     }
     static defaultProps = {
-        rowItemBackgroundColor: '#fff',
-        thumbnailColor: '#f1f1f1',
-        subTitleColor: '#aaa',
-        titleColor: '#000',
-        segmentColor: '#ccc',
-        tabIconColor: '#38b48b',
         isRenderFooter: true,
         isFullData: false
+    }
+    static contextTypes = {
+        segmentColor: PropTypes.string,
+        titleColor: PropTypes.string,
+        subTitleColor: PropTypes.string,
+        rowItemBackgroundColor: PropTypes.string,
+        thumbnailColor: PropTypes.string,
+        tabIconColor: PropTypes.string,
     }
     constructor(props){
         super(props);
@@ -64,7 +60,7 @@ export default class DiscoveryListView extends Component{
         })
     }
     _renderRowContent(rowData){
-        const {titleColor, subTitleColor, rowItemBackgroundColor, thumbnailColor, segmentColor} = this.props;
+        const {titleColor, subTitleColor, rowItemBackgroundColor, thumbnailColor, segmentColor} = this.context;
         return (
             <View style={[styles.itemContainer, {backgroundColor: rowItemBackgroundColor}]}>
                 <View style={[styles.txtPart, {borderBottomColor: segmentColor}]}>
@@ -95,9 +91,9 @@ export default class DiscoveryListView extends Component{
         return time.substring(0, 10);
     }
     _renderFooter(){
-        const {isRenderFooter, tabIconColor, isFullData} = this.props;
+        const {isRenderFooter, isFullData} = this.props;
         return(
-            <Footer indicatorColor={tabIconColor} isFullData={isFullData} isRenderFooter={isRenderFooter}/>
+            <Footer indicatorColor={this.context.tabIconColor} isFullData={isFullData} isRenderFooter={isRenderFooter}/>
         );
     }
     render(){

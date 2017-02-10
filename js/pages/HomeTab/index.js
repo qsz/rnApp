@@ -79,7 +79,9 @@ export default class HomeTab extends Component{
         return (
             <View style={[styles.container,{backgroundColor: pageBackgroundColor}]}>
                 <Animated.View style={[styles.toolbar, {opacity: this.state.opacity}]}>
-                    <NavigationBar title="最新资讯"/>
+                    <NavigationBar title="最新资讯"
+                                   mainThemeColor={mainThemeColor}
+                    />
                 </Animated.View>
                 <ScrollView
                     scrollEnabled={true}

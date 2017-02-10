@@ -17,15 +17,15 @@ export default class NavigationBar extends Component{
     constructor(props) {
         super(props);
     }
-    static contextTypes = {
-        mainThemeColor: PropTypes.string,
-    }
+    // static contextTypes = {
+    //     mainThemeColor: PropTypes.string,
+    // }
     render(){
         const {title, leftBtnIcon, leftBtnText, leftBtnPress, rightBtnIcon, rightBtnText, rightBtnPress} = this.props;
         return (
             <View style={styles.container}>
-                <StatusBar translucent={true} backgroundColor={this.context.mainThemeColor} />
-                <View style={[styles.toolbar, {backgroundColor: this.context.mainThemeColor}]}>
+                <StatusBar translucent={true} backgroundColor={this.props.mainThemeColor} />
+                <View style={[styles.toolbar, {backgroundColor: this.props.mainThemeColor}]}>
                     <View style={styles.fixedCell}>
                         {(leftBtnIcon || leftBtnText) ?
                             <Button icon={leftBtnIcon} text={leftBtnText} onPress={leftBtnPress} />

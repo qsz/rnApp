@@ -24,8 +24,21 @@ export default class RowItem extends Component{
         rowItemBackgroundColor: '#fff',
         arrowColor: '#ccc',
     }
+    static contextTypes = {
+        mainThemeColor: PropTypes.string,
+        arrowColor: PropTypes.string,
+        pageBackgroundColor: PropTypes.string,
+        segmentColor: PropTypes.string,
+        titleColor: PropTypes.string,
+        subTitleColor: PropTypes.string,
+        rowItemBackgroundColor: PropTypes.string,
+        tabIconColor: PropTypes.string,
+        thumbnailColor: PropTypes.string,
+        webViewToolbarColor: PropTypes.string,
+    }
     _renderContent(){
-        const {title, icon, renderSegment, iconColor, isShowRightArrow, rowItemBackgroundColor, segmentColor, titleColor, arrowColor} = this.props;
+        const {title, icon, renderSegment, iconColor, isShowRightArrow} = this.props;
+        const {rowItemBackgroundColor, segmentColor, titleColor, arrowColor} = this.context;
         return (
             <View style={[styles.container, {backgroundColor: rowItemBackgroundColor}]}>
                 <View style={styles.leftCell}>
