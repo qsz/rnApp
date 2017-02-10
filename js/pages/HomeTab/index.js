@@ -12,6 +12,18 @@ export default class HomeTab extends Component{
     static defaultProps = {
         tabIconColor: '#38b48b',
     }
+    static contextTypes = {
+        mainThemeColor: PropTypes.string,
+        arrowColor: PropTypes.string,
+        pageBackgroundColor: PropTypes.string,
+        segmentColor: PropTypes.string,
+        titleColor: PropTypes.string,
+        subTitleColor: PropTypes.string,
+        rowItemBackgroundColor: PropTypes.string,
+        tabIconColor: PropTypes.string,
+        thumbnailColor: PropTypes.string,
+        webViewToolbarColor: PropTypes.string,
+    }
     constructor(props){
         super(props);
         this.state = {
@@ -27,7 +39,6 @@ export default class HomeTab extends Component{
     }
     componentDidMount(){
         this._fetchData();
-
     }
     _getCurrentTime(){
         let date = new Date();
@@ -70,8 +81,9 @@ export default class HomeTab extends Component{
     }
     render(){
         let categoryList = this.state.categoryList, typeList = this.state.typeList;
+        let {tabIconColor, mainThemeColor, pageBackgroundColor} = this.context;
         return (
-            <View style={[styles.container]}>
+            <View style={[styles.container,{backgroundColor: pageBackgroundColor}]}>
                 <Animated.View style={[styles.toolbar, {opacity: this.state.opacity}]}>
                     <NavigationBar title="最新资讯"/>
                 </Animated.View>
@@ -82,15 +94,15 @@ export default class HomeTab extends Component{
                         <RefreshControl
                             refreshing={this.state.loading}
                             onRefresh={this._onPress.bind(this, 0)}
-                            tintColor={'yellow'}
-                            colors={['#38b48b']}
+                            tintColor={mainThemeColor}
+                            colors={[mainThemeColor]}
                             title="拼命加载中..."
                         />}
                 >
                     {
                         this.state.err ?
                             <View style={styles.indicator}>
-                                <Text style={{color: '#38b48b'}}>获取数据失败</Text>
+                                <Text style={{color: tabIconColor}}>获取数据失败</Text>
                             </View>
                             :
                             (
@@ -120,7 +132,7 @@ export default class HomeTab extends Component{
                                     :
                                     <View style={{flex: 1, justifyContent:'center', alignItems:'center', marginTop:px2dp(150)}}>
                                         <ActivityIndicator color={this.props.tabIconColor} size="large"/>
-                                        <Text style={{marginTop: px2dp(10), color: this.props.tabIconColor}}>加载中...</Text>
+                                        <Text style={{marginTop: px2dp(10), color: tabIconColor}}>加载中...</Text>
                                     </View>
                             )
 

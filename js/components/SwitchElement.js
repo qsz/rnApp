@@ -10,11 +10,20 @@ export default class SwitchElement extends Component{
         this.state = {
         }
     }
-    static propTypes = {
+    static contextTypes = {
         mainThemeColor: PropTypes.string,
+        arrowColor: PropTypes.string,
+        pageBackgroundColor: PropTypes.string,
         segmentColor: PropTypes.string,
         titleColor: PropTypes.string,
+        subTitleColor: PropTypes.string,
         rowItemBackgroundColor: PropTypes.string,
+        tabIconColor: PropTypes.string,
+        thumbnailColor: PropTypes.string,
+        webViewToolbarColor: PropTypes.string,
+        changeBackgroundMode: PropTypes.func
+    }
+    static propTypes = {
         title: PropTypes.string.isRequired,
         icon: PropTypes.string,
         iconColor: PropTypes.string,
@@ -23,16 +32,13 @@ export default class SwitchElement extends Component{
         onValueChange: PropTypes.func
     }
     static defaultProps = {
-        mainThemeColor: '#38b48b',
-        segmentColor: '#ccc',
-        titleColor: '#000',
-        rowItemBackgroundColor: '#fff',
         renderSegment: true,
         iconColor: '#000',
         switcherValue: true
     }
     render(){
-        const {title, icon, renderSegment, iconColor, switcherValue, onValueChange, mainThemeColor, rowItemBackgroundColor, segmentColor, titleColor} = this.props;
+        const {title, icon, renderSegment, iconColor, switcherValue, onValueChange} = this.props;
+        const {mainThemeColor, rowItemBackgroundColor, segmentColor, titleColor} = this.context;
         return(
             <View style={[styles.container, {backgroundColor: rowItemBackgroundColor}]}>
                 <View style={styles.leftCell}>

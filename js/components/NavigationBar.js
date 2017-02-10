@@ -14,17 +14,18 @@ export default class NavigationBar extends Component{
         rightBtnText: PropTypes.string,
         rightBtnPress: PropTypes.func
     };
-
     constructor(props) {
         super(props);
     }
-
+    static contextTypes = {
+        mainThemeColor: PropTypes.string,
+    }
     render(){
         const {title, leftBtnIcon, leftBtnText, leftBtnPress, rightBtnIcon, rightBtnText, rightBtnPress} = this.props;
         return (
             <View style={styles.container}>
-                <StatusBar translucent={true} backgroundColor={'#38b48b'} />
-                <View style={[styles.toolbar, {backgroundColor: '#38b48b'}]}>
+                <StatusBar translucent={true} backgroundColor={this.context.mainThemeColor} />
+                <View style={[styles.toolbar, {backgroundColor: this.context.mainThemeColor}]}>
                     <View style={styles.fixedCell}>
                         {(leftBtnIcon || leftBtnText) ?
                             <Button icon={leftBtnIcon} text={leftBtnText} onPress={leftBtnPress} />

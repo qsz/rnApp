@@ -18,24 +18,18 @@ export default class MoreTab extends Component{
             isRefreshAuto: false
         }
     }
-    static propTypes = {
-        pageBackgroundColor: PropTypes.string,
+    static contextTypes = {
         mainThemeColor: PropTypes.string,
+        arrowColor: PropTypes.string,
+        pageBackgroundColor: PropTypes.string,
         segmentColor: PropTypes.string,
         titleColor: PropTypes.string,
+        subTitleColor: PropTypes.string,
         rowItemBackgroundColor: PropTypes.string,
-        arrowColor: PropTypes.string,
-       // isOpenNightMode: PropTypes.bool
-
-    }
-    static defaultProps = {
-        pageBackgroundColor: '#f4f4f4',
-        mainThemeColor: '#38b48b',
-        segmentColor: '#ccc',
-        titleColor: '#000',
-        rowItemBackgroundColor: '#fff',
-        arrowColor: '#ccc',
-      //  isOpenNightMode: false
+        tabIconColor: PropTypes.string,
+        thumbnailColor: PropTypes.string,
+        webViewToolbarColor: PropTypes.string,
+        changeBackgroundMode: PropTypes.func
     }
     _itemClickCallback(id){
         switch(id){
@@ -53,7 +47,7 @@ export default class MoreTab extends Component{
         });
     }
     _renderTitleContent(){
-        const {mainThemeColor, segmentColor, titleColor, rowItemBackgroundColor, arrowColor} = this.props;
+        const {mainThemeColor, segmentColor, titleColor, rowItemBackgroundColor, arrowColor} = this.context;
         return(
             <View style={[styles.block, styles.intro, {backgroundColor: rowItemBackgroundColor, borderBottomColor: segmentColor, borderTopColor: segmentColor}]}>
                 <View style={styles.introLeft}>
@@ -67,6 +61,7 @@ export default class MoreTab extends Component{
         );
     }
     _onNightValueChange(value){
+        this.context.changeBackgroundMode();
         this.setState({
             isOpenNightMode: value
         })
@@ -77,7 +72,7 @@ export default class MoreTab extends Component{
         })
     }
     render(){
-        const {segmentColor, pageBackgroundColor} = this.props;
+        const {segmentColor, pageBackgroundColor} = this.context;
         const {isOpenNightMode, isRefreshAuto} = this.state;
         return (
             <View style={[styles.container, {backgroundColor: pageBackgroundColor}]}>

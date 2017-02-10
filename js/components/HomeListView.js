@@ -21,6 +21,18 @@ export default class HomeListView extends Component{
         subTitleColor: '#aaa',
         rowItemBackgroundColor: '#fff',
     };
+    static contextTypes = {
+        mainThemeColor: PropTypes.string,
+        arrowColor: PropTypes.string,
+        pageBackgroundColor: PropTypes.string,
+        segmentColor: PropTypes.string,
+        titleColor: PropTypes.string,
+        subTitleColor: PropTypes.string,
+        rowItemBackgroundColor: PropTypes.string,
+        tabIconColor: PropTypes.string,
+        thumbnailColor: PropTypes.string,
+        webViewToolbarColor: PropTypes.string,
+    }
     constructor(props){
         super(props);
         this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -51,7 +63,7 @@ export default class HomeListView extends Component{
         }
     }
     _renderHeader(){
-        const {headerTitle, rowItemBackgroundColor, segmentColor} = this.props;
+        const {headerTitle, rowItemBackgroundColor, segmentColor} = this.context;
         return(
             <View style={[styles.header, {backgroundColor: rowItemBackgroundColor, borderTopColor: segmentColor}]}>
                 <Avatar icon={this.tabIcon[this._judgeIconAttribute(headerTitle)]} width={px2dp(20)} backgroundColor={this.tabColor[this._judgeIconAttribute(headerTitle)]}/>
@@ -69,7 +81,7 @@ export default class HomeListView extends Component{
 
     }
     _renderRowContent(rowData){
-        const {titleColor, subTitleColor, rowItemBackgroundColor} = this.props;
+        const {titleColor, subTitleColor, rowItemBackgroundColor} = this.context;
         return(
             <View style={[styles.rowItem, {backgroundColor: rowItemBackgroundColor}]}>
                 <View style={{flexDirection:'row', alignItems:'center'}}>
