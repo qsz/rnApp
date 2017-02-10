@@ -18,6 +18,7 @@ export default class DiscoveryListView extends Component{
         isFullData: false
     }
     static contextTypes = {
+        mainThemeColor: PropTypes.string,
         segmentColor: PropTypes.string,
         titleColor: PropTypes.string,
         subTitleColor: PropTypes.string,
@@ -56,7 +57,13 @@ export default class DiscoveryListView extends Component{
     _itemOnPress(rowData){
         this.props.navigator.push({
             component: WebViewPage,
-            params: {rowData: rowData}
+            params: {
+                rowData: rowData,
+                titleColor: this.context.titleColor,
+                rowItemBackgroundColor: this.context.rowItemBackgroundColor,
+                tabIconColor: this.context.tabIconColor,
+                mainThemeColor: this.context.mainThemeColor,
+            }
         })
     }
     _renderRowContent(rowData){

@@ -56,16 +56,6 @@ export default class WebViewPage extends BackPageComponent{
             showMoreContent: false,
         }
     }
-    static propTypes = {
-        tabIconColor: PropTypes.string,
-        rowItemBackgroundColor: PropTypes.string,
-        titleColor: PropTypes.string
-    }
-    static defaultProps = {
-        tabIconColor: '#38b48b',
-        rowItemBackgroundColor: '#fff',
-        titleColor: '#000'
-    }
     _renderLoading(){
         return(
             <View style={{flex: 1, justifyContent:'center', alignItems:'center'}}>
@@ -154,6 +144,7 @@ export default class WebViewPage extends BackPageComponent{
                         leftBtnPress={this._handleBack.bind(this)}
                         rightBtnIcon="more"
                         rightBtnPress={this._btnOnPressCallback.bind(this, 9)}
+                        mainThemeColor={this.props.mainThemeColor}
                     />
                 </Animated.View>
             </View>
@@ -166,13 +157,7 @@ class ModalItem extends Component{
     static propTypes = {
         icon: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
-        titleColor: PropTypes.string
     };
-
-    static defaultProps = {
-        titleColor: '#000'
-    }
-
     render(){
         return(
             <View style={styles.modalItem}>

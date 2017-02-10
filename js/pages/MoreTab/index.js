@@ -43,7 +43,11 @@ export default class MoreTab extends Component{
     }
     _turnToPage(component){
         this.props.navigator.push({
-            component: component
+            component: component,
+            params:{
+                mainThemeColor: this.context.mainThemeColor,
+                pageBackgroundColor: this.context.pageBackgroundColor
+            }
         });
     }
     _renderTitleContent(){

@@ -57,7 +57,13 @@ export default class DiscoveryListView extends Component{
     _itemOnPress(rowData){
         this.props.navigator.push({
             component: WebViewPage,
-            params: {rowData: rowData}
+            params: {
+                rowData: rowData,
+                titleColor: this.props.titleColor,
+                rowItemBackgroundColor: this.props.rowItemBackgroundColor,
+                tabIconColor: this.props.tabIconColor,
+                mainThemeColor: this.props.mainThemeColor,
+            }
         })
     }
     _renderRowContent(rowData){

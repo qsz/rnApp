@@ -89,6 +89,7 @@ export default class DiscoveryTypePage extends BackPageComponent{
                                               thumbnailColor={thumbnailColor}
                                               segmentColor={segmentColor}
                                               tabIconColor={tabIconColor}
+                                              mainThemeColor={mainThemeColor}
                                 />
                                 :
                                 null

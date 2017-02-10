@@ -10,7 +10,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const styles = StyleSheet.create({
     container: {
-        paddingBottom: px2dp(90),
+        flex: 1,
+        paddingBottom: px2dp(40),
     },
     tabBarItemIcon: {
         width: px2dp(20),

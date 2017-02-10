@@ -75,7 +75,11 @@ export default class HomeListView extends Component{
         this.props.navigator.push({
             component: WebViewPage,
             params: {
-                rowData: rowData
+                rowData: rowData,
+                titleColor: this.context.titleColor,
+                rowItemBackgroundColor: this.context.rowItemBackgroundColor,
+                tabIconColor: this.context.tabIconColor,
+                mainThemeColor: this.context.mainThemeColor,
             }
         })
 
