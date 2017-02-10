@@ -7,6 +7,7 @@ import TestPage from '../pages/TestPage';
 import HomeTab from '../pages/HomeTab';
 import DiscoveryPage from '../pages/DiscoveryTab';
 import RCTDeviceEventEmitter from 'RCTDeviceEventEmitter';
+import MoreTab from '../pages/MoreTab';
 
 export default class TabBar extends Component{
     static defaultProps = {
@@ -69,7 +70,7 @@ export default class TabBar extends Component{
                         renderIcon={() => <Icon name="md-apps" size={20} color={normalColor}/> }
                         renderSelectedIcon={() => <Icon name="md-apps" size={20} color={selectedColor}/> }
                         onPress={() => this.setState({ selectedTab: 'more' })}>
-                        {<TestPage navigator={navigator}/>}
+                        {<MoreTab navigator={navigator}/>}
                     </TabNavigator.Item>
                 </TabNavigator>
         )

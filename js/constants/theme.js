@@ -2,7 +2,8 @@ import {Platform, Dimensions, PixelRatio} from 'react-native';
 import px2dp from '../utils/px2dp';
 
 export default {
-    //mainThemeColor: favoriteColor,
+    mainThemeColor: '#38b48b',
+    arrowColor: '#ccc',
     pageBackgroundColor: '#f4f4f4',
     screenHeight: Dimensions.get('window').height,
     screenWidth: Dimensions.get('window').width,
