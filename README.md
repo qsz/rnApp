@@ -17,7 +17,7 @@
 ### webView
 ![webView1 ](https://github.com/qsz/rnApp/blob/master/screenshots/webview.png) <br>
 ![webView2 ](https://github.com/qsz/rnApp/blob/master/screenshots/webview2.png) <br>
-### nightMode
+### nightMode(gif)
 ![夜间模式 ](https://github.com/qsz/rnApp/blob/master/screenshots/night_mode.gif) <br>
 
 ## to do more
